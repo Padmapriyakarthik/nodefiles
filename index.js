@@ -4,6 +4,8 @@ const app=express();
 const fs=require('fs');//filesystem
 const path=require('path');
 var content="";
+require('dotenv').config()
+const port=process.env.PORT || 4000;
 
 fs.readdir('E:/',(err,data)=>{
     if (err)
@@ -29,4 +31,4 @@ fs.readdir('E:/',(err,data)=>{
 app.get("/",(req,res)=>{
     res.send(content);
 });
-app.listen(5000);//port number to communicate should not conflict with systems port number
+app.listen(port,()=>{console.log("port runs in ", port)});//port number to communicate should not conflict with systems port number
